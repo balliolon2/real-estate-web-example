@@ -186,7 +186,7 @@ const t = {
 };
 
 export default function Home() {
-  const [lang, setLang] = useState<"en" | "th">("th");
+  const [lang, setLang] = useState<"en" | "th">("en");
   const d = t[lang];
   const autoplayPlugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
@@ -244,6 +244,7 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2850&q=80"
             alt="Luxury Condo Exterior"
             fill
+            sizes="100vw"
             className="object-cover opacity-40 scale-105 animate-out zoom-in duration-[20s]"
             priority
           />
@@ -347,6 +348,7 @@ export default function Home() {
                           src={src}
                           alt={`Facility ${index + 1}`}
                           fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 border border-white/10 m-4 pointer-events-none rounded-xl" />
@@ -381,7 +383,7 @@ export default function Home() {
             <TabsContent value="1bed" className="animate-in fade-in slide-in-from-bottom-4 duration-700">
               <div className="grid md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 rounded-2xl border border-white/5">
                 <div className="relative aspect-square bg-slate-900 flex items-center justify-center p-8 rounded-xl overflow-hidden border border-white/5">
-                  <Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="1 Bed Plan" fill className="object-cover opacity-80" />
+                  <Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="1 Bed Plan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-80" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-light mb-2">{d.floorplans.bed1.title}</h3>
@@ -400,7 +402,7 @@ export default function Home() {
             <TabsContent value="2bed" className="animate-in fade-in slide-in-from-bottom-4 duration-700">
               <div className="grid md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 rounded-2xl border border-white/5">
                 <div className="relative aspect-square bg-slate-900 flex items-center justify-center p-8 rounded-xl overflow-hidden border border-white/5">
-                  <Image src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="2 Bed Plan" fill className="object-cover opacity-80" />
+                  <Image src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="2 Bed Plan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-80" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-light mb-2">{d.floorplans.bed2.title}</h3>
@@ -419,7 +421,7 @@ export default function Home() {
             <TabsContent value="penthouse" className="animate-in fade-in slide-in-from-bottom-4 duration-700">
               <div className="grid md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 rounded-2xl border border-white/5">
                 <div className="relative aspect-square bg-slate-900 flex items-center justify-center p-8 rounded-xl overflow-hidden border border-white/5">
-                  <Image src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Penthouse Plan" fill className="object-cover opacity-80" />
+                  <Image src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Penthouse Plan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-80" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-light mb-2">{d.floorplans.penthouse.title}</h3>
@@ -450,7 +452,7 @@ export default function Home() {
 
             <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
               {/* Web3Forms Access Key */}
-              <input type="hidden" name="access_key" value="8e6d2fc0-30d1-4d90-b7e1-ecc05075c934" />
+              <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ""} />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
